@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colleges and Departments - Eternal University</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .college-container {
+            padding: 3rem;
+        }
+
+        .college-card {
+            background: #fff;
+            border-radius: 9px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .college-header {
+            background: #1a237e;
+            color: white;
+            padding: 1rem 2rem;
+            cursor: pointer;
+        }
+
+        .college-header h2 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        .college-content {
+            padding: 1.5rem;
+            display: none;
+        }
+
+        .college-content.active {
+            display: block;
+        }
+
+        .department-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .department-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .department-item:last-child {
+            border-bottom: none;
+        }
+
+        .department-name {
+            color: #1a237e;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .department-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <img src="logo.png" alt="Eternal University Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#">Academics</a>
+                <a href="#">About Us</a>
+                <a href="#">Admissions</a>
+                <a href="#">Research & Facilities</a>
+                <a href="#">Student Zone</a>
+                <a href="#">Quality & Ranking</a>
+                <a href="#">IQAC</a>
+                <a href="#">Contact Us</a>
+                <a href="#">NEP</a>
+                <a href="#">Administration</a>
+                <a href="#">Upcoming Events</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="sidebar">
+                <h3>About Navigation</h3>
+                <ul>
+                    <li><a href="messages.html">Messages</a></li>
+                    <li><a href="#" class="active">Colleges and Departments</a></li>
+                    <li><a href="#">Sponsoring Body Details</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Index and Minutes of Meetings</a></li>
+                    <li><a href="#">Management</a></li>
+                    <li><a href="#">All Faculty List</a></li>
+                    <li><a href="#">University</a></li>
+                    <li><a href="#">Photo Gallery</a></li>
+                    <li><a href="#">Annual Reports</a></li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <h1>Colleges and Departments</h1>
+                
+                <div class="college-container">
+                    <div class="college-card">
+                        <div class="college-header" onclick="toggleCollege('akal')">
+                            <h2>Akal College of Agriculture</h2>
+                        </div>
+                        <div class="college-content" id="akal">
+                            <div class="department-list">
+                                <div class="department-item">
+                                    <div class="department-name">Department of Agriculture</div>
+                                    <div class="department-desc">Offering B.Sc. (Hons.) Agriculture and M.Sc. Agriculture programs</div>
+                                </div>
+                                <div class="department-item">
+                                    <div class="department-name">Department of Horticulture</div>
+                                    <div class="department-desc">Specializing in fruit and vegetable production, floriculture</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="college-card">
+                        <div class="college-header" onclick="toggleCollege('engineering')">
+                            <h2>Akal College of Engineering & Technology</h2>
+                        </div>
+                        <div class="college-content" id="engineering">
+                            <div class="department-list">
+                                <div class="department-item">
+                                    <div class="department-name">Computer Science & Engineering</div>
+                                    <div class="department-desc">B.Tech and M.Tech programs in Computer Science</div>
+                                </div>
+                                <div class="department-item">
+                                    <div class="department-name">Electronics & Communication</div>
+                                    <div class="department-desc">B.Tech in Electronics and Communication Engineering</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="college-card">
+                        <div class="college-header" onclick="toggleCollege('nursing')">
+                            <h2>Akal College of Nursing</h2>
+                        </div>
+                        <div class="college-content" id="nursing">
+                            <div class="department-list">
+                                <div class="department-item">
+                                    <div class="department-name">Department of Nursing</div>
+                                    <div class="department-desc">B.Sc. Nursing and M.Sc. Nursing programs</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="college-card">
+                        <div class="college-header" onclick="toggleCollege('arts')">
+                            <h2>Akal College of Arts & Social Sciences</h2>
+                        </div>
+                        <div class="college-content" id="arts">
+                            <div class="department-list">
+                                <div class="department-item">
+                                    <div class="department-name">Department of Economics</div>
+                                    <div class="department-desc">Bachelor's and Master's programs in Economics</div>
+                                </div>
+                                <div class="department-item">
+                                    <div class="department-name">Department of Psychology</div>
+                                    <div class="department-desc">Undergraduate and Postgraduate programs in Psychology</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleCollege(id) {
+            const content = document.getElementById(id);
+            const allContent = document.querySelectorAll('.college-content');
+            
+            // Close all other colleges
+            allContent.forEach(item => {
+                if (item.id !== id) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle the clicked college
+            content.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
